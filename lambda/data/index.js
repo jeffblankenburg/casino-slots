@@ -1,7 +1,7 @@
-//const getRandomSpeech = require("./getRandomSpeech");
+const getRandomSpeech = require("./getRandomSpeech");
 const getUserRecord = require("./getUserRecord");
 
 module.exports = {
-  //getRandomSpeech,
+  getRandomSpeech,
   getUserRecord,
 };

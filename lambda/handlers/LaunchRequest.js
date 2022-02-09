@@ -1,10 +1,10 @@
-// const data = require("../data");
-// const helper = require("../helper");
+const data = require("../data");
+const helper = require("../helper");
 
 async function LaunchRequest(handlerInput) {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     //helper.setAction(handlerInput, `LAUNCHREQUEST`);
-    //const locale = helper.getLocale(handlerInput);
+    const locale = helper.getLocale(handlerInput);
     //let streakSpeech = "";
     /*
     const slotsPercent = parseInt((sessionAttributes.user.fields.SlotsGames / sessionAttributes.user.fields.TotalGames)*100);
@@ -29,7 +29,8 @@ async function LaunchRequest(handlerInput) {
         }
     }
     */
-    var speakOutput = `<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> <amazon:emotion name="excited" intensity="medium">Welcome to the Chatsino! You currently have <say-as interpret-as="cardinal">${sessionAttributes.user.fields.Balance}</say-as> coins available.</amazon:emotion> `//`<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" />  ${gameSpeech}`; //await data.getRandomSpeech(`Welcome`, locale);
+    var welcomeMessage = await data.getRandomSpeech("WELCOME", locale);
+    var speakOutput = `<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> ${welcomeMessage} You currently have <say-as interpret-as="cardinal">${sessionAttributes.user.fields.Balance}</say-as> coins available. `//`<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" />  ${gameSpeech}`; //await data.getRandomSpeech(`Welcome`, locale);
     var actionQuery = `What would you like to do?`; //await data.getRandomSpeech(`ActionQuery`, locale);
 
     return handlerInput.responseBuilder
