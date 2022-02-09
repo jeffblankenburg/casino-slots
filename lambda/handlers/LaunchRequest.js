@@ -29,7 +29,7 @@ async function LaunchRequest(handlerInput) {
         }
     }
     */
-    var speakOutput = `<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> Welcome to casino slots! `//`<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> <amazon:emotion name="excited" intensity="medium">Welcome to the Chatsino! ${streakSpeech} You currently have <say-as interpret-as="cardinal">${sessionAttributes.user.fields.AvailableBalance}</say-as> coins available.</amazon:emotion> ${gameSpeech}`; //await data.getRandomSpeech(`Welcome`, locale);
+    var speakOutput = `<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> <amazon:emotion name="excited" intensity="medium">Welcome to the Chatsino! You currently have <say-as interpret-as="cardinal">${sessionAttributes.user.fields.Balance}</say-as> coins available.</amazon:emotion> `//`<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" />  ${gameSpeech}`; //await data.getRandomSpeech(`Welcome`, locale);
     var actionQuery = `What would you like to do?`; //await data.getRandomSpeech(`ActionQuery`, locale);
 
     return handlerInput.responseBuilder
