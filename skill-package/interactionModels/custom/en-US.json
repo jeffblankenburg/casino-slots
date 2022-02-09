@@ -1,0 +1,101 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "casino slots",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "UserAccountIntent",
+                    "slots": [],
+                    "samples": [
+                        "what is my user id",
+                        "how do I join my accounts",
+                        "link accounts",
+                        "how do i link my accounts"
+                    ]
+                },
+                {
+                    "name": "WagerIntent",
+                    "slots": [
+                        {
+                            "name": "wager",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "{wager} credits",
+                                "{wager} bucks",
+                                "{wager} coins",
+                                "{wager} chips",
+                                "{wager}",
+                                "bet {wager}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{wager} credits",
+                        "{wager} bucks",
+                        "{wager} coins",
+                        "{wager} chips",
+                        "{wager}",
+                        "bet {wager}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "WagerIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "wager",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.925436174161.626678599468"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.925436174161.626678599468",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What's your bet?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "How many coins do you want to bet?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "How many coins do you want to wager?"
+                    }
+                ]
+            }
+        ]
+    }
+}
