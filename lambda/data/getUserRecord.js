@@ -6,7 +6,7 @@ function getUserRecord(handlerInput) {
   console.log("GETTING USER RECORD");
   const userId = handlerInput.requestEnvelope.session.user.userId;
 
-  const url = `https://api.airtable.com/v0/${keys.airtable_base_data}/User?api_key=${keys.airtable_api_key}&filterByFormula=%7BAlexaUserId%7D%3D%22${encodeURIComponent(userId)}%22`;
+  const url = `https://api.airtable.com/v0/${keys.airtable_base_data}/User?api_key=${keys.airtable_api_key}&filterByFormula=%7BSlotsId%7D%3D%22${encodeURIComponent(userId)}%22`;
   const options = {method: "GET"};
 
   console.log(`PATH: ${url}`);
@@ -23,7 +23,7 @@ function getUserRecord(handlerInput) {
 function createUserRecord(userId) {
   var airtable = new Airtable({ apiKey: keys.airtable_api_key }).base(keys.airtable_base_data);
   return new Promise((resolve, reject) => {
-    airtable("User").create({ AlexaUserId: userId, Balance: 100 }, function (err, record) {
+    airtable("User").create({ SlotsId: userId, Balance: 100 }, function (err, record) {
       console.log("NEW USER RECORD = " + JSON.stringify(record));
       if (err) {
         console.error(err);
