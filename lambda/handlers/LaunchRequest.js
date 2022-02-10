@@ -3,7 +3,7 @@ const helper = require("../helper");
 
 async function LaunchRequest(handlerInput) {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    //helper.setAction(handlerInput, `LAUNCHREQUEST`);
+    helper.setAction(handlerInput, `LAUNCHREQUEST`);
     const locale = helper.getLocale(handlerInput);
     //let streakSpeech = "";
     /*

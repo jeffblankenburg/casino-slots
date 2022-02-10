@@ -1,14 +1,14 @@
 function setAction(handlerInput, action) {
-    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    sessionAttributes.previousAction = action;
-  }
+  const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+  sessionAttributes.previousAction = action;
+}
     
-  function getLocale(handlerInput) {
-    return handlerInput.requestEnvelope.request.locale;
-  }
+function getLocale(handlerInput) {
+  return handlerInput.requestEnvelope.request.locale;
+}
     
-  function getSpokenWords(handlerInput, slot) {
-    if (
+function getSpokenWords(handlerInput, slot) {
+  if (
       handlerInput.requestEnvelope &&
       handlerInput.requestEnvelope.request &&
       handlerInput.requestEnvelope.request.intent &&
@@ -17,11 +17,11 @@ function setAction(handlerInput, action) {
       handlerInput.requestEnvelope.request.intent.slots[slot].value
     )
       return handlerInput.requestEnvelope.request.intent.slots[slot].value;
-    else return undefined;
-  }
+  else return undefined;
+}
     
-    function getResolvedWords(handlerInput, slot) {
-      if (
+function getResolvedWords(handlerInput, slot) {
+if (
         handlerInput.requestEnvelope &&
         handlerInput.requestEnvelope.request &&
         handlerInput.requestEnvelope.request.intent &&
