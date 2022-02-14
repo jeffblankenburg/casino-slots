@@ -29,12 +29,17 @@ async function LaunchRequest(handlerInput) {
         }
     }
     */
-    var welcomeMessage = await data.getRandomSpeech("WELCOME", locale);
-    var speakOutput = `<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> ${welcomeMessage} You currently have <say-as interpret-as="cardinal">${sessionAttributes.user.fields.Balance}</say-as> coins available. `//`<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" />  ${gameSpeech}`; //await data.getRandomSpeech(`Welcome`, locale);
-    var actionQuery = `What would you like to do?`; //await data.getRandomSpeech(`ActionQuery`, locale);
+
+    const [welcomeMessage, balanceMessage, actionQuery] = await Promise.all([
+		data.getRandomSpeech("WELCOME", locale), 
+		data.getRandomSpeech("BALANCE", locale),
+		data.getRandomSpeech("ACTIONQUERY", locale)
+	]);
+
+    var speakOutput = `<audio src="https://s3.amazonaws.com/jeffblankenburg.alexa/chatsino/sfx/intro.mp3" /> ${welcomeMessage} ${balanceMessage.replace("BALANCE", sessionAttributes.user.fields.Balance)} ${actionQuery}`;
 
     return handlerInput.responseBuilder
-        .speak(`${speakOutput} ${actionQuery}`)
+        .speak(`${speakOutput}`)
         .reprompt(actionQuery)
         .getResponse();
 }
