@@ -27,11 +27,7 @@ const WagerIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WagerIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'This is the Wager Intent Handler.';
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(speakOutput)
-            .getResponse();
+        return handlers.UserAccountIntent(handlerInput);
     }
 };
 
