@@ -27,7 +27,7 @@ const WagerIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WagerIntent';
     },
     handle(handlerInput) {
-        return handlers.UserAccountIntent(handlerInput);
+        return handlers.WagerIntent(handlerInput);
     }
 };
 
